@@ -1,0 +1,28 @@
+.important {
+  padding: 100px 0 48px;
+  color: #fff;
+  &__inner {
+    background: #000;
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-wrap {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+  }
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    h2 {
+      text-transform: uppercase;
+    }
+  }
+  #important-chevron {
+    cursor: pointer;
+  }
+}
