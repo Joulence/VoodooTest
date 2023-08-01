@@ -1,21 +1,24 @@
-@import './base/variables';
-@import './base/mixins';
-@import './base/fonts';
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/fonts";
 
+@import "./blocks/header";
+@import "./blocks/important";
+@import "./blocks/products";
 
 * {
-    padding: 0;
-    box-sizing: border-box;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    color: #fff;
-    max-width: 600px;
+  margin: 0;
+  background: $sand;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 h1,
@@ -24,23 +27,25 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
-}
-
-h1 {
-    font-weight: 600;
+  margin: 0;
 }
 
 .container {
-    padding: 0 4%;
+  margin: auto 9.92%;
 }
 
 a {
-    color: #212121;
-    text-decoration: none;
+  color: #212121;
+  text-decoration: none;
 }
 
 ul {
-    list-style: none;
-    margin: 0;
+  list-style: none;
+  margin: 0;
+}
+
+@media (max-width: 896px) {
+    .container {
+        margin: auto 6.15%;
+    }
 }
