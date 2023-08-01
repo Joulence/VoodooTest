@@ -1,0 +1,47 @@
+.products {
+  &__inner {
+    display: grid;
+    grid-column-gap: 24px;
+    grid-row-gap: 48px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  &-used {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-radius: 4px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  &-product {
+    position: relative;
+    width: 300px;
+    &__img {
+      border-radius: 4px;
+      height: 300px;
+      border: 1px solid #000;
+      margin-bottom: 12px;
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 12px;
+
+      .products__info {
+        &-right {
+          text-align: right;
+        }
+      }
+    }
+    button {
+      width: 100%;
+    }
+  }
+}
