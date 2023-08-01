@@ -1,0 +1,36 @@
+.header {
+  padding: 48px 0;
+  border-bottom: 1px solid #000;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &-links {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 896px) {
+  .header {
+    &-title {
+        gap: 4px;
+      &.icon {
+        width: 23px;
+      }
+      &.logo {
+        width: 107px;
+      }
+    }
+  }
+}
