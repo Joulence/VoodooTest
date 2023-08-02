@@ -42,6 +42,18 @@
     }
     button {
       width: 100%;
+      border-radius: 4px;
+      background: #000;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 16px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: all .1s ease-in-out;
+      &:hover {
+        background: transparent;
+        color: #000;
+      }
     }
   }
 }
