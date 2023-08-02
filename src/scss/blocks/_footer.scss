@@ -1,0 +1,23 @@
+.footer {
+  background: #fff;
+  margin-top: 196px;
+  padding: 84px 0;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-logo {
+    img {
+      width: 82px;
+    }
+  }
+  &-links {
+    a {
+      color: #000;
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}
