@@ -17,7 +17,9 @@
     "-": "^0.0.1",
     "D": "^1.0.0",
     "gulp-cli": "^2.3.0",
-    "gulp-string-replace": "^1.1.2"
+    "gulp-string-replace": "^1.1.2",
+    "jquery": "^3.7.0",
+    "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
     "browser-sync": "^2.27.10",
