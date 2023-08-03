@@ -1,4 +1,5 @@
-import * as createProduct from "./createProductInCart.js";
+import { createProduct, updateProduct } from "./createProductInCart.js";
+
 const openCartButton = document.getElementById("openCart");
 const cartElement = document.getElementById("cart");
 const cartCloseButton = document.getElementById("cart-close-btn");
@@ -9,6 +10,10 @@ const products = document.getElementById("products");
 
 const cart = [];
 
+const showInCart = (cart) => {
+  return createProduct(cart);
+};
+
 export const openCart = () => {
   openCartButton.addEventListener("click", () => {
     if (cartElement.classList.contains("cart-is-open")) {
@@ -17,7 +22,6 @@ export const openCart = () => {
     } else {
       cartElement.classList.add("cart-is-open");
       document.body.style.overflow = "hidden";
-      
     }
   });
 
@@ -33,6 +37,8 @@ export const addToCart = () => {
       if (cart.length < 1) {
         cart.push({
           id: event.target.parentElement.id,
+          name: event.target.parentElement.children[1].children[0].children[0]
+            .textContent,
           amount: 1,
           price: parseFloat(
             event.target.parentElement.children[1].children[0].children[1]
@@ -48,6 +54,8 @@ export const addToCart = () => {
         } else {
           cart.push({
             id: event.target.parentElement.id,
+            name: event.target.parentElement.children[1].children[0].children[0]
+              .textContent,
             amount: 1,
             price: parseFloat(
               event.target.parentElement.children[1].children[0].children[1]
@@ -57,12 +65,24 @@ export const addToCart = () => {
         }
       }
       console.log(cart);
+      updateCart(cart);
+      /* cart.forEach((product) => {
+        const itemEl = cartProducts;
+        cartProducts.appendChild(showInCart(product));
+      }); */
     }
   });
 };
 
-const showInCart = (name, price) => {
-  return createProduct.createProduct(name, price);
+const updateCart = (cart) => {
+  cart.forEach((product) => {
+    const productEl = cartProducts.querySelector(`[data-id="${product.id}"]`);
+    if (productEl) {
+      updateProduct(productEl, product);
+    } else {
+      cartProducts.appendChild(showInCart(product));
+    }
+  });
 };
 
 export const cartAmountButton = () => {};

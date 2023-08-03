@@ -1,5 +1,6 @@
-export const createProduct = (prodName, prodPrice) => {
+export const createProduct = (product) => {
   const cartProduct = document.createElement("div");
+  cartProduct.setAttribute("data-id", product.id);
   cartProduct.classList.add("cart-product");
 
   const wrapper = document.createElement("div");
@@ -16,11 +17,11 @@ export const createProduct = (prodName, prodPrice) => {
 
   const name = document.createElement("div");
   name.classList.add("cart-product__info-name");
-  name.textContent = prodName;
+  name.textContent = product.name;
 
   const price = document.createElement("div");
   price.classList.add("cart-product__info-price");
-  price.textContent = prodPrice + " KR.";
+  price.textContent = product.price + " KR.";
 
   const amount = document.createElement("div");
   amount.classList.add("cart-product__info-amount");
@@ -30,7 +31,7 @@ export const createProduct = (prodName, prodPrice) => {
 
   const input = document.createElement("input");
   input.type = "number";
-  input.value = "1";
+  input.value = product.amount;
 
   const buttonPlus = document.createElement("button");
   buttonPlus.textContent = "+";
@@ -76,4 +77,16 @@ export const createProduct = (prodName, prodPrice) => {
   cartProduct.appendChild(deleteButton);
 
   return cartProduct;
+};
+
+export const updateProduct = (element, product) => {
+  // cart-product__info-price
+  // cart-product__info-amount
+  const priceEl = element.querySelector(".cart-product__info-price");
+  const amountInputEl = element.querySelector(
+    ".cart-product__info-amount > input"
+  );
+
+  priceEl.textContent = product.amount * product.price + " .KR";
+  amountInputEl.value = product.amount;
 };
