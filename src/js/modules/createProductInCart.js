@@ -1,3 +1,5 @@
+import { deleteIcon } from "./icons.js";
+
 export const createProduct = (product) => {
   const cartProduct = document.createElement("div");
   cartProduct.setAttribute("data-id", product.id);
@@ -28,6 +30,7 @@ export const createProduct = (product) => {
 
   const buttonMinus = document.createElement("button");
   buttonMinus.textContent = "-";
+  buttonMinus.classList.add("decrease");
 
   const input = document.createElement("input");
   input.type = "number";
@@ -35,6 +38,7 @@ export const createProduct = (product) => {
 
   const buttonPlus = document.createElement("button");
   buttonPlus.textContent = "+";
+  buttonPlus.classList.add("increase");
 
   amount.appendChild(buttonMinus);
   amount.appendChild(input);
@@ -51,28 +55,8 @@ export const createProduct = (product) => {
   cartProduct.appendChild(wrapper);
 
   const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = deleteIcon;
   deleteButton.classList.add("cart-product__delete");
-
-  const svg = document.createElement("svg");
-  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  svg.setAttribute("width", "24");
-  svg.setAttribute("height", "24");
-  svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("fill", "none");
-
-  const clipPath = document.createElement("clipPath");
-  clipPath.setAttribute("id", "clip0_2720_971");
-
-  const rect = document.createElement("rect");
-  rect.setAttribute("width", "24");
-  rect.setAttribute("height", "24");
-  rect.setAttribute("fill", "white");
-
-  clipPath.appendChild(rect);
-
-  svg.appendChild(clipPath);
-
-  deleteButton.appendChild(svg);
 
   cartProduct.appendChild(deleteButton);
 

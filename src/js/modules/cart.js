@@ -1,7 +1,7 @@
 import { createProduct, updateProduct } from "./createProductInCart.js";
 
-const openCartButton = document.getElementById("openCart");
 const cartElement = document.getElementById("cart");
+const openCartButton = document.getElementById("openCart");
 const cartCloseButton = document.getElementById("cart-close-btn");
 
 const cartProducts = document.querySelector(".cart-products");
@@ -65,27 +65,72 @@ export const addToCart = () => {
         }
       }
       console.log(cart);
-      updateCart(cart);
-      /* cart.forEach((product) => {
-        const itemEl = cartProducts;
-        cartProducts.appendChild(showInCart(product));
-      }); */
+
+      cart.forEach((product) => {
+        updateCart(product);
+      });
+
+      updateTotal();
     }
   });
 };
 
-const updateCart = (cart) => {
-  cart.forEach((product) => {
-    const productEl = cartProducts.querySelector(`[data-id="${product.id}"]`);
-    if (productEl) {
-      updateProduct(productEl, product);
-    } else {
-      cartProducts.appendChild(showInCart(product));
+const updateCart = (product) => {
+  const productEl = cartProducts.querySelector(`[data-id="${product.id}"]`);
+  if (productEl) {
+    updateProduct(productEl, product);
+  } else {
+    cartProducts.appendChild(showInCart(product));
+  }
+};
+
+export const initCartListener = () => {
+  cartElement.addEventListener("click", (event) => {
+    if (
+      event.target.classList.contains("decrease") ||
+      event.target.classList.contains("increase") ||
+      event.target.classList.contains("cart-product__delete")
+    ) {
+      const productEl = event.target.closest(".cart-product");
+
+      if (productEl) {
+        const productId = productEl.dataset.id;
+        if (productId) {
+          const productItemIndex = cart.findIndex((el) => el.id === productId);
+          if (productItemIndex > -1) {
+            if (event.target.classList.contains("decrease")) {
+              if (cart[productItemIndex].amount === 1) {
+                productEl.parentElement.removeChild(productEl);
+                cart.splice(productItemIndex, 1);
+              } else {
+                cart[productItemIndex].amount--;
+                updateCart(cart[productItemIndex]);
+              }
+            }
+            if (event.target.classList.contains("increase")) {
+              cart[productItemIndex].amount++;
+              updateCart(cart[productItemIndex]);
+            }
+            if (event.target.classList.contains("cart-product__delete")) {
+              productEl.parentElement.removeChild(productEl);
+              cart.splice(productItemIndex, 1);
+            }
+          }
+        }
+      }
+
+      updateTotal();
     }
   });
 };
 
-export const cartAmountButton = (dataId) => {
-  const product = document.querySelector(`[data-id="${dataId}"]`);
-  console.log(product);
+const updateTotal = () => {
+  const totalAmountEl = document.getElementById("total-amount");
+
+  const totalPrice = cart.reduce((result, cartItem) => {
+    result += cartItem.amount * cartItem.price;
+    return result;
+  }, 0);
+
+  totalAmountEl.innerHTML = totalPrice.toFixed(2) + "KR.";
 };

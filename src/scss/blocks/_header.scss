@@ -1,6 +1,7 @@
 .header {
   padding: 48px 0;
   border-bottom: 1px solid #000;
+  transition: all .1s linear;
 
   &__inner {
     display: flex;

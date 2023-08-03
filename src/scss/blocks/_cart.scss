@@ -8,7 +8,9 @@
   top: 0;
   color: #fff;
   padding-top: 49px;
-  transition: all .3s ease-in-out;
+  position: fixed;
+  overflow: auto;
+  transition: all 0.3s ease-in-out;
   &.cart-is-open {
     height: 100%;
     visibility: initial;
@@ -27,6 +29,16 @@
   }
   &-products {
     padding: 53px 0 33px;
+    border-bottom: 1px solid #fcf7e6;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  &-total {
+    padding: 35px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   &-product {
     display: flex;
@@ -77,6 +89,9 @@
       background: transparent;
       border: none;
       cursor: pointer;
+      * {
+        pointer-events: none;
+      }
     }
   }
 }
