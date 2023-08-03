@@ -39,18 +39,22 @@
         &-right {
           text-align: right;
         }
+        &-left {
+          font-weight: 700;
+        }
       }
     }
     button {
       width: 100%;
       border-radius: 4px;
+      font-size: 14px;
       background: #000;
       color: #fff;
       text-transform: uppercase;
       padding: 16px 0;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       cursor: pointer;
-      transition: all .1s ease-in-out;
+      transition: all 0.1s ease-in-out;
       &:hover {
         background: transparent;
         color: #000;
@@ -75,10 +79,27 @@
   }
 }
 
+@media (max-width: 896px) {
+  .products {
+    &-product {
+      &__info {
+      }
+    }
+  }
+}
+
 @media (max-width: 705px) {
   .products {
     &__inner {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .products {
+    &-product {
+      width: 250px;
     }
   }
 }

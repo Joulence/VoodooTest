@@ -269,4 +269,23 @@ ul {
   .container {
     margin: auto 6.15%;
   }
+
+  .tui-pagination {
+    .tui-page-btn {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .tui-pagination {
+    gap: 10px;
+  }
+  .tui-pagination {
+    .tui-page-btn {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
 }
