@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.min.css?_v=20230803230542">
+    <title>VoodooTest</title>
+</head>
+  <body>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <div class="header-title">
+          <img
+            class="header-title icon"
+            src="img/icons/icon.svg"
+            alt="icon"
+          />
+          <img
+            class="header-title logo"
+            src="img/icons/name_img.svg"
+            alt="VoodooTest"
+          />
+        </div>
+        <div class="header-links">
+          <button id="openCart">
+            <img src="img/header/cart.svg" alt="cart" />
+          </button>
+          <a href="#">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="cart" class="cart">
+    <div class="container">
+      <div class="cart__inner">
+        <div class="cart-title">
+          <h3>Shopping cart</h3>
+          <button id="cart-close-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M6.99999 5.58599L11.95 0.635986L13.364 2.04999L8.41399 6.99999L13.364 11.95L11.95 13.364L6.99999 8.41399L2.04999 13.364L0.635986 11.95L5.58599 6.99999L0.635986 2.04999L2.04999 0.635986L6.99999 5.58599Z"
+                fill="#FCF7E6"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="cart-products"></div>
+        <div class="cart-total">
+          <span>TOTAL</span>
+          <span id="total-amount">0KR.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="important">
+    <div class="container">
+      <div id="important-collapse" class="important__inner">
+        <div class="important__inner-wrap">
+          <div class="important-title">
+            <img src="img/important/alert-circle.svg" alt="alert" />
+            <h2>alpha</h2>
+          </div>
+          <div id="phrase" class="important-info">
+            Important info regarding our service
+          </div>
+        </div>
+        <img
+          id="important-chevron"
+          src="img/important/chevron-down.svg"
+          alt="chevron-down"
+        />
+      </div>
+      <expand-menu></expand-menu>
+    </div>
+  </section>
+
+  <main>
+    <section class="products">
+      <div class="container">
+        <div id="products" class="products__inner"></div>
+        <div id="pagination" class="tui-pagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer-logo">
+          <img src="img/icons/icon.svg" alt="Logo" />
+        </div>
+        <nav class="footer-links links-info">
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">RETURNS</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-links links-policy">
+          <ul>
+            <li><a href="#">TERMS & CONDITIONS</a></li>
+            <li><a href="#">PRIVACY POLICY</a></li>
+            <li><a href="#">COOKIE POLICY</a></li>
+            <li><a href="#">COOKIE SETTINGS</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-links links-media">
+          <ul>
+            <li><a href="#">ABOUT SECOND CHANCE</a></li>
+            <li><a href="#">CAREER</a></li>
+            <li><a href="#">FACEBOOK</a></li>
+            <li><a href="#">INSTAGRAM</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</body>
+
+<script>
+  class ExpandElement extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quae necessitatibus voluptatibus quisquam quo odit eveniet error nostrum perspiciatis accusantium!";
+    }
+
+    disconnectedCallback() {}
+
+    static get observedAttributes() {
+      return [];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {}
+
+    adoptedCallback() {}
+  }
+
+  customElements.define("expand-menu", ExpandElement);
+</script>
+
+  <!-- Scripts -->
+  <script src="./js/app.min.js?_v=20230803230542"></script>
+</html>
