@@ -1,7 +1,7 @@
 export const productBlock = (id, name, price) => {
   const productDiv = document.createElement("div");
   productDiv.classList.add("products-product");
-  productDiv.setAttribute("id", id);
+  productDiv.setAttribute("id", "product" + id);
 
   const imgDiv = document.createElement("div");
   imgDiv.classList.add("products-product__img");

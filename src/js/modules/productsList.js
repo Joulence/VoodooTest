@@ -7,6 +7,7 @@ async function fetchProductsList() {
     `https://voodoo-sandbox.myshopify.com/products.json?limit=${numberOfProjects}`
   );
   const products = await response.json();
+  console.log(products);
 
   const paginationElement = document.getElementById("pagination");
 
@@ -34,7 +35,6 @@ async function fetchProductsList() {
           [i].classList.contains("tui-is-selected")
       ) {
         currentPage = document.querySelectorAll(".tui-page-btn")[i].textContent;
-        // fetchProductsList();
       }
     }
     console.log(`Current Page: ${currentPage}`);
