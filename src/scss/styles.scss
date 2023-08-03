@@ -3,6 +3,7 @@
 @import "./base/fonts";
 
 @import "./blocks/header";
+@import "./blocks/cart";
 @import "./blocks/important";
 @import "./blocks/products";
 @import "./blocks/footer";
@@ -20,6 +21,7 @@ body {
   margin: 0;
   background: $sand;
   font-family: "Space Grotesk", sans-serif;
+  position: relative;
 }
 
 h1,
@@ -32,7 +34,7 @@ h6 {
 }
 
 .container {
-  margin: auto 9.92%;
+  margin: auto 120px;
 }
 
 a {

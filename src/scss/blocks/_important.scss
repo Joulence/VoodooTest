@@ -26,3 +26,27 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 896px) {
+  .important {
+    &-title {
+      h2 {
+        font-size: 16px;
+      }
+      &-info {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 512px) {
+  .important {
+    &__inner {
+      padding: 10px;
+      &-wrap {
+        gap: 15px;
+      }
+    }
+  }
+}
