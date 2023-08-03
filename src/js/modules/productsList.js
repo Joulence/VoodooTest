@@ -1,29 +1,35 @@
 import * as createDiv from "./createProductWrapper.js";
 
-async function fetchProductsList() {
+const paginationElement = document.getElementById("pagination");
+
+async function fetchProductsList(page) {
   const numberOfProjects = 24;
   const productsInner = document.getElementById("products");
   const response = await fetch(
-    `https://voodoo-sandbox.myshopify.com/products.json?limit=${numberOfProjects}`
+    `https://voodoo-sandbox.myshopify.com/products.json?limit=${numberOfProjects}&page=${page}`
   );
-  const products = await response.json();
+  const responseProducts = await response.json();
   console.log(products);
 
-  const paginationElement = document.getElementById("pagination");
+  productsInner.innerHTML = "";
 
-  let currentPage = 1;
-
-  for (let i = 0; i < numberOfProjects; i++) {
-    productsInner.append(
-      createDiv.productBlock(
-        products.products[i].id,
-        products.products[i].title,
-        products.products[i].variants[0].price + " KR."
-      )
-    );
+  if (responseProducts?.products?.length) {
+    responseProducts.products.forEach((product) => {
+      productsInner.append(
+        createDiv.productBlock(
+          product.id,
+          product.title,
+          product.variants[0].price + " KR."
+        )
+      );
+    });
+  } else {
+    productsInner.innerHTML = "Nothing to fetch!";
   }
 
-  paginationElement.addEventListener("click", () => {
+  return Promise.resolve(true);
+
+  /* paginationElement.addEventListener("click", () => {
     for (
       let i = 0;
       i < document.querySelectorAll(".tui-page-btn").length;
@@ -37,10 +43,31 @@ async function fetchProductsList() {
         currentPage = document.querySelectorAll(".tui-page-btn")[i].textContent;
       }
     }
-    console.log(`Current Page: ${currentPage}`);
-  });
+    console.log(`Current Page: ${page}`);
+
+  }); */
 }
 
+const initPaginatorListener = () => {
+  paginationElement.addEventListener("click", () => {
+    const selectedPageBtn = paginationElement.querySelector(
+      ".tui-page-btn.tui-is-selected"
+    );
+    if (selectedPageBtn) {
+      const pageNumber = parseInt(selectedPageBtn.textContent);
+      fetchProductsList(pageNumber);
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  });
+};
+
 export const getProductsList = () => {
-  fetchProductsList();
+  fetchProductsList(1).then(
+    () => {
+      initPaginatorListener();
+    },
+    () => {
+      alert("UNEXPECTED ERROR HAPPENED!!!");
+    }
+  );
 };
