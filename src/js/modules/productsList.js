@@ -28,24 +28,6 @@ async function fetchProductsList(page) {
   }
 
   return Promise.resolve(true);
-
-  /* paginationElement.addEventListener("click", () => {
-    for (
-      let i = 0;
-      i < document.querySelectorAll(".tui-page-btn").length;
-      i++
-    ) {
-      if (
-        document
-          .querySelectorAll(".tui-page-btn")
-          [i].classList.contains("tui-is-selected")
-      ) {
-        currentPage = document.querySelectorAll(".tui-page-btn")[i].textContent;
-      }
-    }
-    console.log(`Current Page: ${page}`);
-
-  }); */
 }
 
 const initPaginatorListener = () => {

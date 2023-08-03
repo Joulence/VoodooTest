@@ -64,7 +64,7 @@ export const addToCart = () => {
           });
         }
       }
-      console.log(cart);
+      // console.log(cart);
 
       cart.forEach((product) => {
         updateCart(product);
