@@ -15,7 +15,9 @@
           />
         </div>
         <div class="header-links">
-          <button id="openCart"><img src="../img/header/cart.svg" alt="cart" /></button>
+          <button id="openCart">
+            <img src="../img/header/cart.svg" alt="cart" />
+          </button>
           <a href="#">Sign up</a>
         </div>
       </div>
@@ -42,51 +44,14 @@
             </svg>
           </button>
         </div>
-        <div class="cart-products">
-          <!-- <div class="cart-product">
-            <div class="cart-product__wrapper">
-              <div class="cart-product__photo"></div>
-              <div class="cart-product__block">
-                <div class="cart-product__info"></div>
-                <div class="cart-product__info-name">Product Name</div>
-                <div class="cart-product__info-price">1000 KR.</div>
-                <div class="cart-product__info-amount">
-                  <button>-</button>
-                  <input value="1" type="number" name="" id="" />
-                  <button>+</button>
-                </div>
-              </div>
-            </div>
-            <button id="" class="cart-product__delete">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_2720_971)">
-                  <path
-                    d="M7 4V2H17V4H22V6H20V21C20 21.2652 19.8946 21.5196 19.7071 21.7071C19.5196 21.8946 19.2652 22 19 22H5C4.73478 22 4.48043 21.8946 4.29289 21.7071C4.10536 21.5196 4 21.2652 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"
-                    fill="#FCF7E6"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_2720_971">
-                    <rect width="24" height="24" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-          </div> -->
-        </div>
+        <div class="cart-products"></div>
       </div>
     </div>
   </div>
 
   <section class="important">
     <div class="container">
-      <div class="important__inner">
+      <div id="important-collapse" class="important__inner">
         <div class="important__inner-wrap">
           <div class="important-title">
             <img src="../img/important/alert-circle.svg" alt="alert" />
@@ -102,6 +67,7 @@
           alt="chevron-down"
         />
       </div>
+      <expand-menu></expand-menu>
     </div>
   </section>
 
@@ -147,3 +113,27 @@
     </div>
   </footer>
 </body>
+
+<script>
+  class ExpandElement extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quae necessitatibus voluptatibus quisquam quo odit eveniet error nostrum perspiciatis accusantium!";
+    }
+
+    disconnectedCallback() {}
+
+    static get observedAttributes() {
+      return [];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {}
+
+    adoptedCallback() {}
+  }
+
+  customElements.define("expand-menu", ExpandElement);
+</script>

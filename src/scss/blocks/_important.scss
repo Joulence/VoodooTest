@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
     &-wrap {
       display: flex;
       align-items: center;
@@ -23,7 +24,7 @@
     }
   }
   #important-chevron {
-    cursor: pointer;
+    transition: all 0.1s linear;
   }
 }
 
@@ -49,4 +50,8 @@
       }
     }
   }
+}
+
+.important-open {
+  transform: rotate(180deg);
 }

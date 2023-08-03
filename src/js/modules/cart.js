@@ -85,4 +85,7 @@ const updateCart = (cart) => {
   });
 };
 
-export const cartAmountButton = () => {};
+export const cartAmountButton = (dataId) => {
+  const product = document.querySelector(`[data-id="${dataId}"]`);
+  console.log(product);
+};

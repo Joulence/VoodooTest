@@ -1,6 +1,7 @@
 import * as createDiv from "./createProductWrapper.js";
 
 const paginationElement = document.getElementById("pagination");
+let currentPage = 1;
 
 async function fetchProductsList(page) {
   const numberOfProjects = 24;
@@ -9,7 +10,6 @@ async function fetchProductsList(page) {
     `https://voodoo-sandbox.myshopify.com/products.json?limit=${numberOfProjects}&page=${page}`
   );
   const responseProducts = await response.json();
-  console.log(products);
 
   productsInner.innerHTML = "";
 
@@ -55,14 +55,17 @@ const initPaginatorListener = () => {
     );
     if (selectedPageBtn) {
       const pageNumber = parseInt(selectedPageBtn.textContent);
-      fetchProductsList(pageNumber);
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      if (pageNumber !== currentPage) {
+        currentPage = pageNumber;
+        fetchProductsList(pageNumber);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   });
 };
 
 export const getProductsList = () => {
-  fetchProductsList(1).then(
+  fetchProductsList(currentPage).then(
     () => {
       initPaginatorListener();
     },
